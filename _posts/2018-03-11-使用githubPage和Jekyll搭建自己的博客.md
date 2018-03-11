@@ -1,6 +1,6 @@
 ---
-title: 在Windows7下使用githubPage和Jekyll搭建自己的博客
-date: 2018-03-10 23:10:04
+title: 使用githubPage和Jekyll搭建自己的博客
+date: 2018-03-12 00:30:04
 categories:
 - Tech
 ---
