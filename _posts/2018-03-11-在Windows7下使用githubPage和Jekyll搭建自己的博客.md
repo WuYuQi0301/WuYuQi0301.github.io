@@ -112,17 +112,18 @@ token是工具们除了设置SSH之外另一种链接Github的方法。据说新
 GitHub Pages分两种，一种是你的GitHub用户名建立的`yourusername.github.io`这样的 *User & Organization Pages* ，另一种是依附项目的pages。建立个人博客使用的是前者，并且形如`yourusername.github.io`这样的可访问网站，每个github用户名下只能建立一个。
 
 1. 在github中建立一个名为`yourusername.github.io`的仓库。提交一个`index.html`文件（不提交不让生成的页面的）（废话）。我就十(hao)分(wu)随(xin)意(yi)地敲了个
-```html
+```
 <!DOCTYPE html>
 <html>
 <head>
     <title>Yuki'world</title>
 </head>
 <body>
-hello world
+    hello world
 </body>
 </html>
 ```
+
 然后`push`到该仓库的`master`上。等待约十分钟至页面生效，访问`yourusername.github.io`就可以看到上传的页面了。
 2.绑定域名
 希望用户可以通过我自(hua)己(qian)的域名来访问，需要在仓库的根目录下新建一个名为`CNAME`的文件并把域名扔进去：
