@@ -119,25 +119,23 @@ HomeWork1 中基本概念部分。
 ```
     
 - 添加子对象
-    ```c
+```c
     GameObject.CreatePrimitive(PrimitiveType);
-    ```
+```
     
 - 遍历对象树
-
-    ```c
-    foreach（Transform t in transform）｛
-        //body
-    ｝
-    ```
+```c
+foreach（Transform t in transform）｛
+    //body
+｝
+```
 - 清除所有对象  
-{% endhighlight %}
-    ```c
+ ```c
     GameObject obj= transform.FindChild("table").gameObject;
     foreach (Transform child in obj.transform) {  
         GameObject.Destroy(child.gameObject);  
     }  
-    ```
+ ```
 
 ### 资源预设(Prefabs)与对象克隆(clone)
 - 预设（Prefabs）有什么好处？
