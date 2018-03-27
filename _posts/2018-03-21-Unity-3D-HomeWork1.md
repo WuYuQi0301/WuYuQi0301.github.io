@@ -17,9 +17,71 @@ categories:
     - 基本行为包括 Awake() Start() Update() FixedUpdate() LateUpdate()
     - 常用事件包括 OnGUI() OnDisable() OnEnable()
 
-    ```c#
+    ```c
+public class InitBeh : MonoBehaviour {
+    private int awakeCount;
+    private int startCount;
+    private int updateCount;
+    private int fixedUpdateCount;
+    private int laterUpdateCount;
+    private int onGUICount;
 
+    // Use this for initialization
+    void Start() {
+        if(startCount++ < 3)
+            Debug.Log("Start ");
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if(updateCount++ < 3)
+            Debug.Log("Update ");
+    }
+
+    //First run in project
+    private void Awake() {
+        awakeCount = 1;
+        startCount = updateCount = fixedUpdateCount = laterUpdateCount = onGUICount = 0;
+        Debug.Log("Awake ");
+        awakeCount++;
+    }
+
+    private void FixedUpdate() {
+        if (fixedUpdateCount++ < 3)
+            Debug.Log("FixedUpdate ");
+    }
+    private void LateUpdate() {
+        if(laterUpdateCount++ < 3)
+            Debug.Log("LateUpdate ");
+    }
+    private void OnGUI() {
+        if(onGUICount++ < 3)
+            Debug.Log("OnGUI ");
+    }
+    private void OnDisable() {
+        Debug.Log("OnDisable");
+    }
+    private void OnEnable() {
+        Debug.Log("OnEnable");
+    }
+
+}
     ```
+输出结果  
+![FirstPart](http://i4.bvimg.com/618639/321710527c288258.png)
+![Second](http://i4.bvimg.com/618639/d3183b375074539a.png)
+![Third](http://i4.bvimg.com/618639/f6ed3b5832dffafe.png)
+
+|Method|Description|
+|Awake|当一个脚本实例被载入时(when script object is initialised)调用|
+|Start|在所有Update函数之前被调用一次(when a script is enabled)|
+|Update|当行为启用时，其Update在每一帧被调用|
+|FixedUpdate|当行为启用时，其FixedUpdate在每一**时间片**被调用|
+|LateUpdate|当行为启用时，在每一帧的Update函数之后执行|
+|OnGUI|用于渲染和处理GUI时间，一帧可能调用许多次|
+|OnDisable|行为失效或者对象销毁时调用|
+|OnEnable|对象使能时候调用|
+
 - 查找脚本手册，了解GameObject，Transform，Conponent对象
     + 分别翻译官方对三个对象的描述(Description)
         * **GameObjects**: Base class for all entities in Unity scenes. 游戏对象是Unity场景中所有实例的基类。
@@ -31,20 +93,20 @@ categories:
     + 用UML图描述三者的关系
         ![UML](https://pan.baidu.com/s/1ZZfPtp6HLmQo8vU7fWTvpg)
 - 整理相关学习资料，编写简单代码验证以下技术的实现
-    + 查找对象
-    ```c#
+    + 查找对象  
+    ```
 
     ```
-    + 添加子对象
-    ```c#
+    + 添加子对象  
+    ```
 
     ```
-    + 遍历对象树
-    ```c#
+    + 遍历对象树  
+    ```
 
     ```
-    + 清除所有对象
-    ```c#
+    + 清除所有对象  
+    ```
 
     ```
 - 资源预设(Prefabs)与对象克隆(clone)
