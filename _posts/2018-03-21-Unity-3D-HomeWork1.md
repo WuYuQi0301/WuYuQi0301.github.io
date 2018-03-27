@@ -74,7 +74,7 @@ HomeWork1 中基本概念部分。
     ![Second](http://i4.bvimg.com/618639/d3183b375074539a.png)
     ![Third](http://i4.bvimg.com/618639/f6ed3b5832dffafe.png)
 
-**总结**
+**总结**  
     |Method|Description|
     |------|----------:|
     |Awake|当一个脚本实例被载入时(when script object is initialised)调用|
@@ -87,10 +87,10 @@ HomeWork1 中基本概念部分。
     |OnEnable|对象使能时候调用|
 
 ### 查找脚本手册，了解GameObject，Transform，Conponent对象
-- 分别翻译官方对三个对象的描述(Description)
-        * **GameObjects**: Base class for all entities in Unity scenes. 游戏对象是Unity场景中所有实例的基类。
-        * **Transform**: Position, rotation and scale of an object. Every object in a scene has a Transform. It's used to store and manipulate the position, rotation and scale of the object. Every Transform can have a parent, which allows you to apply position, rotation and scale hierarchically. 对象的位置、旋转和大小。每一个对象都有一个Transform来储存和操作它的位置、旋转和大小。每个Transform对象都有一个父类使得开发者可以将位置、旋转和大小的信息继承地应用。
-        * **Components**: Base class for everything attached to GameObjects. Note that your code will never directly create a Component. Instead, you write script code, and attach the script to a GameObject. 任何与游戏对象有关联的对象的基类。代码并不会直接创建一个组件，而是通过把写好的脚本代码关联到一个游戏对象上。
+- 分别翻译官方对三个对象的描述(Description)  
+    - **GameObjects**: Base class for all entities in Unity scenes. 游戏对象是Unity场景中所有实例的基类。
+    - **Transform**: Position, rotation and scale of an object. Every object in a scene has a Transform. It's used to store and manipulate the position, rotation and scale of the object. Every Transform can have a parent, which allows you to apply position, rotation and scale hierarchically. 对象的位置、旋转和大小。每一个对象都有一个Transform来储存和操作它的位置、旋转和大小。每个Transform对象都有一个父类使得开发者可以将位置、旋转和大小的信息继承地应用。
+    - **Components**: Base class for everything attached to GameObjects. Note that your code will never directly create a Component. Instead, you write script code, and attach the script to a GameObject. 任何与游戏对象有关联的对象的基类。代码并不会直接创建一个组件，而是通过把写好的脚本代码关联到一个游戏对象上。
         
 - 描述下图中table对象（实体）的属性、table的Transform的属性、table的部件
         ![homework](https://pan.baidu.com/s/1myqv_r1PAmFZDPofJdTk5A)
