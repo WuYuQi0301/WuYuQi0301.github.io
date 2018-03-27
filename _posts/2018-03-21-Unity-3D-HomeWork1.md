@@ -75,16 +75,16 @@ HomeWork1 中基本概念部分。
     ![Third](http://i4.bvimg.com/618639/f6ed3b5832dffafe.png)
 
 **总结**  
-    |Method|Description|
-    |------|----------:|
-    |Awake|当一个脚本实例被载入时(when script object is initialised)调用|
-    |Start|在所有Update函数之前被调用一次(when a script is enabled)|
-    |Update|当行为启用时，其Update在每一帧被调用|
-    |FixedUpdate|当行为启用时，其FixedUpdate在每一**时间片**被调用|
-    |LateUpdate|当行为启用时，在每一帧的Update函数之后执行|
-    |OnGUI|用于渲染和处理GUI时间，一帧可能调用许多次|
-    |OnDisable|行为失效或者对象销毁时调用|
-    |OnEnable|对象使能时候调用|
+|Method|Description|  
+|------|----------:|  
+|Awake|当一个脚本实例被载入时(when script object is initialised)调用|  
+|Start|在所有Update函数之前被调用一次(when a script is enabled)|  
+|Update|当行为启用时，其Update在每一帧被调用| 
+|FixedUpdate|当行为启用时，其FixedUpdate在每一**时间片**被调用|  
+|LateUpdate|当行为启用时，在每一帧的Update函数之后执行|  
+|OnGUI|用于渲染和处理GUI时间，一帧可能调用许多次|  
+|OnDisable|行为失效或者对象销毁时调用|  
+|OnEnable|对象使能时候调用|  
 
 ### 查找脚本手册，了解GameObject，Transform，Conponent对象
 - 分别翻译官方对三个对象的描述(Description)  
@@ -131,6 +131,12 @@ HomeWork1 中基本概念部分。
     ｝
     ```
 - 清除所有对象  
+{% highlight bash lineanchors %}
+    GameObject obj= transform.FindChild("table").gameObject;
+    foreach (Transform child in obj.transform) {  
+        GameObject.Destroy(child.gameObject);  
+    } 
+{% endhighlight %}
     ```c
     GameObject obj= transform.FindChild("table").gameObject;
     foreach (Transform child in obj.transform) {  
