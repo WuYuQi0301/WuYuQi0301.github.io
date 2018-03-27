@@ -131,11 +131,6 @@ HomeWork1 中基本概念部分。
     ｝
     ```
 - 清除所有对象  
-{% highlight bash lineanchors %}
-    GameObject obj= transform.FindChild("table").gameObject;
-    foreach (Transform child in obj.transform) {  
-        GameObject.Destroy(child.gameObject);  
-    } 
 {% endhighlight %}
     ```c
     GameObject obj= transform.FindChild("table").gameObject;
