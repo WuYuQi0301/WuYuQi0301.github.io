@@ -24,17 +24,30 @@ categories:
 # 游戏实现
 ## 发布-订阅
 ### 概念
-发布订阅模式实现：一个对象发生改变的时候将通知其他对象，其他对象将相应做出反应。其中这样有几个角色：发生改变的对象称为观察对象或者发布者，被通知的对象称为观察者或者订阅者。
+发布订阅模式实现：一个对象发生改变的时候将通知其他对象，其他对象将相应做出反应。其中这样有几个角色：发生改变的对象称为观察对象或者发布者，被通知的对象称为观察者或者订阅者。  
 一个发布者可以被多个订阅者订阅，且发布者并不需要知道谁是它的订阅者，从而可以形成多对多关系的解耦。
 ### 应用
-在巡逻兵游戏中，我们希望碰撞事件发生之后，场景控制器能够做出反应，故设“碰撞事件发生”为发布的信号，“FirstController”为订阅者；为了更好地集成各种事件，我们设置中间件，游戏事件管理器“GameEventManager”来向FirstController发出信号。
+在巡逻兵游戏中，我们希望碰撞事件发生之后，场景控制器能够做出反应，故设“碰撞事件发生”为发布的信号，“FirstController”为订阅者；为了更好地集成各种事件，我们设置中间件，游戏事件管理器“GameEventManager”来向FirstController发出信号。  
 
-在C#中有一种特殊的变量**delegate**，意味“委托”。
+在C#中有一种特殊的变量**delegate**，意味“委托”。它有些类似c++中的指针，一种存有对某个方法引用的引用类型变量，特别用于实现事件和回调。  
+发布订阅模式中经常使用事件（event）来使用委托。  
+事件在发布者 GameEventManager处声明并生成，并通过 GameEventManager类中的委托与事件处理器FirstController关联。
 ```c#
+//class GameEventManager
+    public delegate void ScoreEvent();
+    public static event ScoreEvent ScoreChange;
+
+    public delegate void GameoverEvent();
+    public static event GameoverEvent GameoverChange;
 ```
 
 ```c#
+//class FirstController
+    GameEventManager.ScoreChange += AddScore;
+    GameEventManager.GameoverChange += Gameover;
 ```
 
+
+*视频审核中*
 巡逻兵代码Github [传送门](https://github.com/WuYuQi0301/Unity-Game-Programming/tree/patrol/Assets)  
 大一学c++时候fork的[design_pattern](https://github.com/WuYuQi0301/design_patterns)
