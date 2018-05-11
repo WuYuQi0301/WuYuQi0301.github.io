@@ -48,6 +48,7 @@ categories:
 ```
 
 
-*视频审核中*
+<iframe width="660" height="455" src="http://v.youku.com/v_show/id_XMzYwMDMzMzM0OA==.html?spm=a2h3j.8428770.3416059.1" frameborder="0" allowfullscreen></iframe>
+
 巡逻兵代码Github [传送门](https://github.com/WuYuQi0301/Unity-Game-Programming/tree/patrol/Assets)  
 大一学c++时候fork的[design_pattern](https://github.com/WuYuQi0301/design_patterns)
