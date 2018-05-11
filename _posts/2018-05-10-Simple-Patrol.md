@@ -20,8 +20,10 @@ categories:
  + 工厂模式生产巡逻兵
 
 # 类图
-
+![UML]{http://i1.bvimg.com/618639/3d8e97cb6a9a0708.png}
 # 游戏实现
 ## 构建场景
 ## 巡逻兵
 ## 发布-订阅
+
+Github[传送门]{https://github.com/WuYuQi0301/Unity-Game-Programming/tree/patrol/Assets}
