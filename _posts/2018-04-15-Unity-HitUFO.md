@@ -18,4 +18,5 @@ categories:
  - 尽可能使用MVC结构实现人机交互与游戏模型的分离
 
 ## 类图
+![diskUML](http://i1.bvimg.com/618639/c42481db2d60f2fd.png)
 

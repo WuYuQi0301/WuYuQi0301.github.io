@@ -20,10 +20,12 @@ categories:
  + 工厂模式生产巡逻兵
 
 # 类图
-![UML]{http://i1.bvimg.com/618639/3d8e97cb6a9a0708.png}
-# 游戏实现
-## 构建场景
-## 巡逻兵
+![UML](http://i1.bvimg.com/618639/3d8e97cb6a9a0708.png)
 ## 发布-订阅
+### 概念
+发布订阅模式实现：一个对象发生改变的时候将通知其他对象，其他对象将相应做出反应。其中这样有几个角色：发生改变的对象称为观察对象或者发布者，被通知的对象称为观察者或者订阅者。
+一个发布者可以被多个订阅者订阅，且发布者并不需要知道谁是它的订阅者，从而可以形成多对多关系的解耦。
+### 应用
 
-Github[传送门]{https://github.com/WuYuQi0301/Unity-Game-Programming/tree/patrol/Assets}
+巡逻兵代码Github [传送门](https://github.com/WuYuQi0301/Unity-Game-Programming/tree/patrol/Assets)
+大一学c++时候fork的[design_pattern](https://github.com/WuYuQi0301/design_patterns)
