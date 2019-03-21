@@ -3,7 +3,10 @@ title: DL Training
 date: 2019-03-20 20:30:00
 categories:
 - Deep Learning
+mathjax: true
 ---
+
+
 
 
 
@@ -49,7 +52,6 @@ $$
 1. 通过对激活函数的观察（如图，蓝色曲线为激活函数图像，绿色图像为激活函数导数的图像），已知$|g'(u_i)|<1成立。$
 
    ![D4gAB.jpg](https://ww1.yunjiexi.club/2019/03/18/D4gAB.jpg)
-   
 
 2. 权值
 
@@ -96,9 +98,9 @@ $$
 
 
    为了使得方差序列满足Rule，即$Var(h_l)\approx Var(h_{l-1})​$:
-   $$
+$$
    Var(w) = \frac{1}{n}
-   $$
+$$
 
 3. 同时需要 variance of backward gradient signal across layer does not change（网络层级之间的后向梯度信号的方差不变）：
    $$
