@@ -36,13 +36,11 @@ to train a two-layer network classifier
     $$
     y = (y_1,...,y_K) = (0,...,1,...0)
     $$
-    
 
   - 交叉熵 Cross emtropy loss 
     $$
     l(y,\hat y) = -\sum_{k=1}^Ky_klog\hat{y_k}
     $$
-    
 
   - ReLU $g(u_i) = max(0, u_i)$, Softmax $\sigma(z)$
 
@@ -122,26 +120,31 @@ to train a two-layer network classifier
 
 ### Stochastic optimization
 
+快速梯度下降
+
 - 符号
 
   - 训练数据集 Training dataset
     $$
     D = \{(x_n, y_n) | n = 1,...,N \}
     $$
-    
 
-  - 损失函数 = 交叉熵损失函数的均值
+  - Loss funtion = 交叉熵损失函数的均值
     $$
     L(\theta) = \frac{1}{N}\sum^N_{n=1}l(y_n, f(x_n;\theta))
     $$
 
-- 使用梯度下降和所有数据更新模型参数：
+- 使用梯度下降和所有数据更新模型参数过程如下
   $$
   \begin{align}
-  \theta_{t+1} = \theta_t-
+  \theta_{t+1} &= \theta_t-\eta\ \triangledown L(\theta_t)\\
+  &=\frac{\eta}{N}\sum^N_{n=1}l(y_n, f(x_n;\theta))
   \end{align}
   $$
-  
+
+  >  使用所有数据会使得训练变得非常慢，并且要存储的数据量很大，故需要找损失函数的Loss funtion；
+
+
 
 ### Hyper-parameter tuning
 
