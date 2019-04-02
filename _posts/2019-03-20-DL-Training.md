@@ -92,27 +92,32 @@ $$
 
 Xavier方法有两个假设
 
-1.  激活函数$g(u_{l,k})​$在$u_{l,k}​$比较小的时候是线性的（例如tanh），那么就有
+1.  激活函数$g(u_{l,k})$在$u_{l,k}$比较小的时候是线性的（例如tanh），那么就有
 
 $$
 h_{l,k} \approx \sum_{j=1}^{n}h_{l-1}w_{j,k}
 $$
 
-2. 输入信号$\{h_{l-1,j}\}​$和权值$w_{j,k}​$都是独立同分布的，且均值为0。*概率与统计中可证，加权和是线性的，方差亦然* ；那么就有
-   $$ {align}
+2. 输入信号$\{h_{l-1,j}\}$和权值$w_{j,k}$都是独立同分布的，且均值为0。*概率与统计中可证，加权和是线性的，方差亦然* ；那么就有\\
+
+  
+   $$
    \begin{align}
    Var(h_l,k)&\approx\sum_{j=1}^nVar(h_{l-1,j})Var(w_{j,k})\\
    Var(h_l)&\approx nVar(h_{l-1})Var(w)
    \end{align}
    $$
 
+   为了使得方差序列满足Rule，即$Var(h_l)\approx Var(h_{l-1})$:
 
-   为了使得方差序列满足Rule，即$Var(h_l)\approx Var(h_{l-1})​$:
+
 $$
-   Var(w) = \frac{1}{n}
+Var(w) = \frac{1}{n}
 $$
 
 3. 同时需要 variance of backward gradient signal across layer does not change（网络层级之间的后向梯度信号的方差不变）：
+
+  
    $$
    Var(w) = \frac{1}{m}
    $$
@@ -140,8 +145,10 @@ $$
   $$
 
 - 采样自均匀分布
+
+  
   $$
-  xxxxxxxxxx1 1w\sim U[-\frac{\sqrt{6}}{\sqrt{n}},\frac{\sqrt{6}}{\sqrt{n}}]
+  x\sim U[-\frac{\sqrt{6}}{\sqrt{n}},\frac{\sqrt{6}}{\sqrt{n}}]
   $$
 
 论文指路：*K. He. Zhang, S.Ren, and J.Sun, Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification, 2015*
@@ -158,15 +165,23 @@ $$
 
 ## Batch normalization (BN)
 
-对于每一个mini-batch输入$\{x_n\}​$，对于每一维度进行归一化处理，其中$E(x_k)​$和$Var(x_k)​$分别为$\{x_n\}​$所有第k维数据的均值和方差：
+对于每一个mini-batch输入$\{x_n\}$，对于每一维度进行归一化处理，其中$E(x_k)$和$Var(x_k)$分别为$\{x_n\}$所有第k维数据的均值和方差：
+
+
 $$
 \hat{x_k} = \frac{x_k-E(x_k)}{\sqrt{Var(x_k)+\delta}}
 $$
+
+
 直接使用这种归一化会降低每个输入输出的多样性，训练网络变得非常缓慢因为每次的输入都“差不多”，于是大佬们又设计出恢复神经元*representation variety*的方法，即用一个线性函数将归一化后的输入拉开差距：
+
+
 $$
 y_k = \gamma_k\hat{x_k}+\beta_k \equiv BN_{\gamma_k,\beta_k(x_k)}
 $$
-其中 都独立于mini-batch 数据，使得它们不会影响数据本身。同时，不同的维度可能会有不同的$\gamma_k  ​$和$\beta_k​$。为了确定$\gamma_k  ​$和$\beta_k​$的值，将它们作为模型参数的一部分进行训练，在训练中学习合适的值。
+
+
+其中 都独立于mini-batch 数据，使得它们不会影响数据本身。同时，不同的维度可能会有不同的$\gamma_k  $和$\beta_k$。为了确定$\gamma_k  $和$\beta_k$的值，将它们作为模型参数的一部分进行训练，在训练中学习合适的值。
 
 下面两张图说明了BN部分可以放在hidden 内部不同的位置。左边的图将BN放在加和函数之前，右边的放在激活函数之前，实验证明（？）, 对于从非线性的激活函数得到的归一化输入效果并不理想；而右边BN输出结果更近似于一个高斯分布。
 
@@ -188,14 +203,20 @@ Over-fitting的问题在函数拟合中又说，这里就不赘述了。为了�
 
 $L_p$ regularization的思路是通过在loss函数上添加一个参数作为”惩罚“（penalty），这个参数服从$L_p$范数，一般比较大，以减少过拟合的可能性：
 $$
-L(\theta) = \frac{1}{N}\sum_{n=1}^Nl(y,f)+\lambda||\theta||_p
+L(\theta) = \frac{1}{N}\sum_{n=1}^Nl(y,f)+\lambda\|\theta\|_p
 $$
 其中：
 
-- $L_p$范数 $||\theta||_p \equiv (\sum_i|\theta_i|p)^{1/p}$
-- $\lambda:$ 一个超参数，用于决定范数项的权重
-- $p=1$：得到更少的非零权值参数
-- $p=2$：得到更小的权值（"weight decay"）
+- $L_p$范数
+  $$
+  \|\theta\|_p \equiv (\sum_i|\theta_i|p)^{1/p}
+  $$
+
+- $\lambda:​$ 一个超参数，用于决定范数项的权重
+
+- $p=1​$：得到更少的非零权值参数
+
+- $p=2​$：得到更小的权值（"weight decay"）
 
 ### Dropout
 
