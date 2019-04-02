@@ -2,7 +2,9 @@
 title: Software-Analysis-Design-HW1
 date: 2019-03-13 10:08:29
 categories:
-- 系统分析与设计
+- System Analysis & Design
+tag:
+- homework
 ---
 
 System Analysis Course homework 1 on topic *The essence of software and software engineering science*.
