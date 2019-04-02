@@ -3,6 +3,8 @@ title: SLAM Ceres和g2o基本使用
 date: 2019-03-31 23:30:00
 categories:
 - SLAM
+tag:
+- lab
 mathjax: true
 ---
 
