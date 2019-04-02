@@ -3,6 +3,8 @@ title: DL Training
 date: 2019-03-20 20:30:00
 categories:
 - Deep Learning
+tag
+- dl-notes
 mathjax: true
 ---
 
@@ -14,7 +16,7 @@ Discussion on issues in training a network, including gradient exploding& vanish
 
 
 
-## A general model training process
+# A general model training process
 
 > 0. pre-set hyper-parameters
 > 1. initialize model parrameters
@@ -28,28 +30,34 @@ Discussion on issues in training a network, including gradient exploding& vanish
 
 
 
-## 梯度爆炸/消失
+# 梯度爆炸/消失
 
-### 问题描述
+## 问题描述
 
 对于多层网络（如图）而言，有很多隐藏的梯度问题。
 
-例如，在求loss函数对参数$w_1​$的导数时应用链式法则我们有如下式子（注意第一行仅有连乘的最后一项是对模型参数$w​$求导，其他都是对激活函数的输出$h_i​$求导）：
+例如，在求loss函数对参数$w_1$的导数时应用链式法则我们有如下式子（注意第一行仅有连乘的最后一项是对模型参数$w$求导，其他都是对激活函数的输出$h_i$求导）：
+
+
 $$
 \begin{align}
 \frac{\delta l}{\delta w_1} &=\frac{\delta l}{\delta h_l}*(\frac{dh_l}{du_l}*\frac{du_l}{dh_{l-1}})*(\frac{dh_{l-1}}{du_{l-1}}*\frac{du_{l-1}}{dh_{l-2}})*...*(\frac{dh_{1}}{du_1}*\frac{du_1}{dw_1})\\
 &=\frac{\delta l}{\delta h_{l}}*(g'(u_l)*w_l)*(g'(u_{l-1})*w_{l-1})*...*(g'(u_1)*x)
 \end{align}
 $$
-梯度爆炸问题的含义就是，如果每个$g'(u_i)w_i​$都大于1，那么$|\frac{\delta l}{\delta w_1}|​$将远大于1；反之则称为梯度消失问题。
+
+
+梯度爆炸问题的含义就是，如果每个$g'(u_i)w_i$都大于1，那么$|\frac{\delta l}{\delta w_1}|$将远大于1；反之则称为梯度消失问题。
 
 
 
-### 方法：防止梯度爆炸
+## 方法：防止梯度爆炸
 
-梯度爆炸的表现在训练过程不稳定上；若能同时满足$|g'(u_i)|<1​$和$|w_i|<1​$，就能够避免梯度爆炸问题。
+梯度爆炸的表现在训练过程不稳定上；若能同时满足$|g'(u_i)|<1$和$|w_i|<1$，就能够避免梯度爆炸问题。
 
-1. 通过对激活函数的观察（如图，蓝色曲线为激活函数图像，绿色图像为激活函数导数的图像），已知$|g'(u_i)|<1成立。$
+
+
+1. 通过对激活函数的观察（如图，蓝色曲线为激活函数图像，绿色图像为激活函数导数的图像），已知$|g'(u_i)|<1成立。​$
 
    ![D4gAB.jpg](https://ww1.yunjiexi.club/2019/03/18/D4gAB.jpg)
 
@@ -59,9 +67,11 @@ $$
 
    - 在训练过程中使用 **Weight re-normalization** 
 
+     
+
 3. rescaling 输入 $x​$ 使得输入满足$|x|<1​$
 
-### 方法：减少梯度消失
+## 方法：减少梯度消失
 
 梯度消失问题会使得训练过程（梯度下降）变得非常缓慢。为了缓解这个问题，需要让连乘项不要太小：
 
@@ -70,7 +80,7 @@ $$
    - **Weight initialization** 时主流分布有两种，第一种为均匀分布，$w_i\sim U(-a, a)$；第二种为正态分布$w_i\sim N(0,\sigma^2)$，之后会详细说明。
    - **Weight re-normalization**
 
-### Weight initialization
+## Weight initialization
 
 原则就一句话，不好翻译就不翻译了，大家自由心证一下：
 
@@ -78,7 +88,7 @@ $$
 >
 > **or** : variance of signal across layer does not change
 
-#### Xavier's method
+### Xavier's method
 
 Xavier方法有两个假设
 
@@ -120,7 +130,7 @@ $$
     w\sim U[-\frac{\sqrt{6}}{\sqrt{n+m}},\frac{\sqrt{6}}{\sqrt{n+m}}]
     $$
     
-#### He's method
+### He's method
 
 刚才说啦，由于Xavier方法做出了假设2，它并不适用于ReLU激活函数（均值一定是正数）。当激活函数变为ReLU的时候，用一下分布比较好：
 
@@ -138,7 +148,7 @@ $$
 
 -------
 
-## Mini-batch Issue
+# Mini-batch Issue
 
 如前所述，mini-batch是将数据集分成若干组进行训练的方法。*这意味着经常会有不同mini-batch数据子集有不同的分布的问题，使得网络的每一层的输入都会有不同的mini-batch分布，且一个minibatch的分布对于一层网络随着时间也会变化，每一层网络都需要连续变化以适应不同的新的分布，mini-batch的方向不一定是合适的方向*。
 
@@ -146,7 +156,7 @@ $$
 
 为了解决这个问题，我们对mini-batch输入做一些处理以使得它们具有相似的数据分布。
 
-### Batch normalization (BN)
+## Batch normalization (BN)
 
 对于每一个mini-batch输入$\{x_n\}​$，对于每一维度进行归一化处理，其中$E(x_k)​$和$Var(x_k)​$分别为$\{x_n\}​$所有第k维数据的均值和方差：
 $$
@@ -168,13 +178,13 @@ $$
 
 
 
-## Over-fitting Issue
+# Over-fitting Issue
 
 Over-fitting的问题在函数拟合中又说，这里就不赘述了。为了避免过拟合的问题重点是找到合适数量的model parameter ，既不致使loss非常大，也不至于有过拟合问题。
 
-### Regularization
+## Regularization
 
-#### $L_p$ norm
+### $L_p$ norm
 
 $L_p$ regularization的思路是通过在loss函数上添加一个参数作为”惩罚“（penalty），这个参数服从$L_p$范数，一般比较大，以减少过拟合的可能性：
 $$
@@ -187,7 +197,7 @@ $$
 - $p=1$：得到更少的非零权值参数
 - $p=2$：得到更小的权值（"weight decay"）
 
-#### Dropout
+### Dropout
 
 >  论文指路：Srivastava et al., Dropout: A simple Way to Prevent Neural Networks from Overfitting, 2014
 
@@ -199,7 +209,7 @@ $$
 
 
 
-## Ensemble model
+# Ensemble model
 
 当然了，经常来说一个网络是不足以满足实践要求的，通常需要不同的**初始权值**或者不同的**模型架构**得到一个混合网络，最后通过**平均**或者**投票**的方式得到最终预测。
 
