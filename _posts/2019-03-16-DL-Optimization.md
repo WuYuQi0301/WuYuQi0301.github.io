@@ -3,6 +3,8 @@ title: DL Optimization
 date: 2019-03-16 23:30:00
 categories:
 - Deep Learning
+tag:
+- dl-notes
 mathjax: true
 ---
 

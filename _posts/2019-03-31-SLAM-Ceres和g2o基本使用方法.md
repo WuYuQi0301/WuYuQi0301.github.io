@@ -4,7 +4,7 @@ date: 2019-03-31 23:30:00
 categories:
 - SLAM
 tag:
-- lab
+- slam-lab
 mathjax: true
 ---
 
