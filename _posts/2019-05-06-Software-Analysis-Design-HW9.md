@@ -20,7 +20,7 @@ System Analysis Course homework 6 on topic *Domain Modeling-Object State*.
 
   - make reservation
 
-    ![]()
+    ![pay](https://ww2.yunjiexi.club/2019/06/04/HlU2C.jpg)
 
     - 数据建模
 
@@ -40,7 +40,9 @@ System Analysis Course homework 6 on topic *Domain Modeling-Object State*.
 
   - payment
 
-    ![]()
+    ![mr](https://ww1.yunjiexi.club/2019/06/04/HlQxq.jpg)
+
+    
 
     - 数据建模
 
@@ -50,3 +52,4 @@ System Analysis Course homework 6 on topic *Domain Modeling-Object State*.
 - 2、使用 UML State Model，对每个订单对象生命周期建模
   - 建模对象： 参考 Asg_RH 文档， 对 Reservation/Order 对象建模。
   - 建模要求： 参考练习不能提供足够信息帮助你对订单对象建模，请参考现在 定旅馆 的旅游网站，尽可能分析围绕订单发生的各种情况，直到订单通过销售事件（柜台销售）结束订单。
+
